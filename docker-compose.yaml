@@ -1,0 +1,20 @@
+services:
+  app:
+    build: .
+    ports:
+      - 3000:3000
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: business_supply
+    depends_on:
+      - mysql
+
+  mysql:
+    build: ./db
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: business_supply
